@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://byvmxbf4t8qys"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_armvo"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(254.25, 323.75)
+scale = Vector2(509.5, 648.5)
+texture = SubResource("CanvasTexture_armvo")
