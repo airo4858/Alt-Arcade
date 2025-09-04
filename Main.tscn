@@ -1,11 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://byvmxbf4t8qys"]
+[gd_scene load_steps=12 format=3 uid="uid://byvmxbf4t8qys"]
+
+[ext_resource type="PackedScene" uid="uid://ca8awl2bsuwt3" path="res://paddle.tscn" id="1_8cm68"]
+[ext_resource type="Script" path="res://paddle.gd" id="2_3reps"]
+[ext_resource type="PackedScene" uid="uid://bmst28wbyyhvq" path="res://ball.tscn" id="2_pqjbk"]
+[ext_resource type="PackedScene" uid="uid://y6plhf1m67it" path="res://opponent.tscn" id="3_hkp6y"]
+[ext_resource type="Script" path="res://ball.gd" id="4_wlx0j"]
+[ext_resource type="Script" path="res://opponent.gd" id="6_a87uh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_armvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tef3m"]
+size = Vector2(55, 647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxwb"]
+size = Vector2(40, 647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03qp2"]
+size = Vector2(522, 40.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx4xm"]
+size = Vector2(529, 44)
 
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(254.25, 323.75)
-scale = Vector2(509.5, 648.5)
+position = Vector2(216.75, 323.75)
+scale = Vector2(434.5, 648.5)
 texture = SubResource("CanvasTexture_armvo")
+
+[node name="Paddle" parent="." groups=["Paddle"] instance=ExtResource("1_8cm68")]
+position = Vector2(219, 611)
+script = ExtResource("2_3reps")
+
+[node name="Ball" parent="." instance=ExtResource("2_pqjbk")]
+position = Vector2(218, 578)
+script = ExtResource("4_wlx0j")
+
+[node name="Opponent" parent="." groups=["Paddle"] instance=ExtResource("3_hkp6y")]
+position = Vector2(220, 31)
+script = ExtResource("6_a87uh")
+
+[node name="Walls" type="Area2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-27.5, 322.5)
+shape = SubResource("RectangleShape2D_tef3m")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(454, 324.5)
+shape = SubResource("RectangleShape2D_0yxwb")
+
+[node name="PlayerEndZone" type="Area2D" parent="." groups=["AnubisPoint"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEndZone"]
+position = Vector2(210, 667.75)
+shape = SubResource("RectangleShape2D_03qp2")
+
+[node name="AnubisEndZone" type="Area2D" parent="." groups=["PlayerPoint"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnubisEndZone"]
+position = Vector2(209.5, -23)
+shape = SubResource("RectangleShape2D_cx4xm")
