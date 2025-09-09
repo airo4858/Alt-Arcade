@@ -24,6 +24,8 @@ window/size/viewport_width=432
 Paddle=""
 PlayerPoint=""
 AnubisPoint=""
+GameOver=""
+Opponent=""
 
 [input]
 

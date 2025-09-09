@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 func _physics_process(delta: float) -> void:
+	position.x = clamp(position.x,0,432)
 	if (Input.is_action_pressed("Left_1")):
 		position.x -= 4
 	if (Input.is_action_pressed("Left_2")):

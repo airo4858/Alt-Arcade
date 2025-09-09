@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3who8"]
 size = Vector2(96, 21)
 
-[node name="Paddle" type="CharacterBody2D"]
+[node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.75, -0.5)

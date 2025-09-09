@@ -37,11 +37,11 @@ script = ExtResource("2_3reps")
 position = Vector2(218, 578)
 script = ExtResource("4_wlx0j")
 
-[node name="Opponent" parent="." groups=["Paddle"] instance=ExtResource("3_hkp6y")]
-position = Vector2(220, 31)
+[node name="Opponent" parent="." groups=["Opponent", "Paddle"] instance=ExtResource("3_hkp6y")]
+position = Vector2(216, 31)
 script = ExtResource("6_a87uh")
 
-[node name="Walls" type="Area2D" parent="."]
+[node name="Walls" type="CharacterBody2D" parent="."]
 
 [node name="LeftWall" type="CollisionShape2D" parent="Walls"]
 position = Vector2(-27.5, 322.5)
@@ -51,13 +51,13 @@ shape = SubResource("RectangleShape2D_tef3m")
 position = Vector2(454, 324.5)
 shape = SubResource("RectangleShape2D_0yxwb")
 
-[node name="PlayerEndZone" type="Area2D" parent="." groups=["AnubisPoint"]]
+[node name="PlayerEndZone" type="CharacterBody2D" parent="." groups=["AnubisPoint", "GameOver"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEndZone"]
 position = Vector2(210, 667.75)
 shape = SubResource("RectangleShape2D_03qp2")
 
-[node name="AnubisEndZone" type="Area2D" parent="." groups=["PlayerPoint"]]
+[node name="AnubisEndZone" type="CharacterBody2D" parent="." groups=["GameOver", "PlayerPoint"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnubisEndZone"]
 position = Vector2(209.5, -23)
