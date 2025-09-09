@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://byvmxbf4t8qys"]
+[gd_scene load_steps=14 format=3 uid="uid://byvmxbf4t8qys"]
 
 [ext_resource type="PackedScene" uid="uid://ca8awl2bsuwt3" path="res://paddle.tscn" id="1_8cm68"]
 [ext_resource type="Script" path="res://paddle.gd" id="2_3reps"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://y6plhf1m67it" path="res://opponent.tscn" id="3_hkp6y"]
 [ext_resource type="Script" path="res://ball.gd" id="4_wlx0j"]
 [ext_resource type="Script" path="res://opponent.gd" id="6_a87uh"]
+[ext_resource type="FontFile" uid="uid://cnoxr2hkjq6e4" path="res://pixel-game/Pixel Game.otf" id="7_qdnmh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_armvo"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1pw47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tef3m"]
 size = Vector2(55, 647)
@@ -24,22 +27,61 @@ size = Vector2(529, 44)
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.827451, 0.498039, 0.113725, 1)
 position = Vector2(216.75, 323.75)
 scale = Vector2(434.5, 648.5)
 texture = SubResource("CanvasTexture_armvo")
 
-[node name="Paddle" parent="." groups=["Paddle"] instance=ExtResource("1_8cm68")]
-position = Vector2(219, 611)
+[node name="CenterLine" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(216, 324)
+scale = Vector2(432, 10)
+texture = SubResource("CanvasTexture_1pw47")
+
+[node name="Scores" type="CanvasLayer" parent="."]
+
+[node name="AnubisScore" type="Label" parent="Scores"]
+offset_left = 402.0
+offset_top = 260.0
+offset_right = 443.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0.745098, 0.14902, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_qdnmh")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="PlayerScore" type="Label" parent="Scores"]
+offset_left = 403.0
+offset_top = 340.0
+offset_right = 436.0
+offset_bottom = 392.0
+theme_override_colors/font_color = Color(0.745098, 0.14902, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_qdnmh")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Paddle" parent="." instance=ExtResource("1_8cm68")]
+position = Vector2(218, 610)
 script = ExtResource("2_3reps")
 
 [node name="Ball" parent="." instance=ExtResource("2_pqjbk")]
 position = Vector2(218, 578)
 script = ExtResource("4_wlx0j")
 
-[node name="Opponent" parent="." groups=["Opponent", "Paddle"] instance=ExtResource("3_hkp6y")]
-position = Vector2(216, 31)
+[node name="Opponent" parent="." groups=["Opponent"] instance=ExtResource("3_hkp6y")]
+position = Vector2(216, 40)
 script = ExtResource("6_a87uh")
+
+[node name="PaddlePosition" type="Node2D" parent="."]
+position = Vector2(218, 610)
+
+[node name="BallPosition" type="Node2D" parent="."]
+position = Vector2(218, 578)
+
+[node name="OpponentPosition" type="Node2D" parent="."]
+position = Vector2(216, 40)
 
 [node name="Walls" type="CharacterBody2D" parent="."]
 
