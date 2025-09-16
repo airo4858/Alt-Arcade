@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 1.0
+@onready var scales = preload("res://scales_nuetral.png")
 var forward = Vector2(1,1).normalized()
 const paddle_width: float = 100.0
 var is_running: bool = false
@@ -26,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		if (Input.is_action_just_pressed("Start")):
 			is_running = true
 			visible = true
-			
+			get_parent().get_node("StartScreen").visible = false
 		return
 	
 	var collision: KinematicCollision2D = move_and_collide(speed*forward)

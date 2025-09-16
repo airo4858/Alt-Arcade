@@ -8,7 +8,7 @@ func _physics_process(delta: float) -> void:
 	if (position.x == ball_x):
 		opp_speed = 0
 	if (position.x > ball_x):
-		opp_speed = -0.45
+		opp_speed = -0.6
 	if (position.x < ball_x):
-		opp_speed = 0.45
+		opp_speed = 0.6
 	position.x += opp_speed
