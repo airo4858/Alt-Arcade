@@ -7,22 +7,22 @@ extends CharacterBody2D
 
 func _physics_process(delta: float) -> void:
 	position.x = clamp(position.x,48,384)
-	#position.x += movement
+	position.x += movement
 	if (Input.is_action_pressed("Left_1")):
 		position.x -= 4
 	if (Input.is_action_pressed("Left_2")):
 		position.x -= 3
-	if (Input.is_action_pressed("Left_3")):
-		position.x -= 2
-		#movement = -2
+	if (Input.is_action_pressed("ui_left")):
+		#position.x -= 2
+		movement = -2
 		get_parent().get_node("Scale").texture = scales_left
 	if (Input.is_action_pressed("Left_4")):
 		position.x -= 1
 	if (Input.is_action_pressed("Right_5")):
 		position.x += 1
-	if (Input.is_action_pressed("Right_6")):
-		position.x += 2
-		#movement = 2
+	if (Input.is_action_pressed("ui_right")):
+		#position.x += 2
+		movement = 2
 		get_parent().get_node("Scale").texture = scales_right
 	if (Input.is_action_pressed("Right_7")):
 		position.x += 3
