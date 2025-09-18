@@ -14,6 +14,3 @@ texture = SubResource("CanvasTexture_ol5it")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hgjxs")
-
-[node name="CollisionCooldown" type="Timer" parent="."]
-one_shot = true

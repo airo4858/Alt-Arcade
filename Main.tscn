@@ -97,7 +97,7 @@ position = Vector2(218, 610)
 script = ExtResource("2_3reps")
 
 [node name="Ball" parent="." instance=ExtResource("2_pqjbk")]
-position = Vector2(218, 578)
+position = Vector2(240, 578)
 script = ExtResource("4_wlx0j")
 
 [node name="Opponent" parent="." groups=["Opponent"] instance=ExtResource("3_hkp6y")]
@@ -108,7 +108,7 @@ script = ExtResource("6_a87uh")
 position = Vector2(218, 610)
 
 [node name="BallPosition" type="Node2D" parent="."]
-position = Vector2(218, 578)
+position = Vector2(240, 578)
 
 [node name="OpponentPosition" type="Node2D" parent="."]
 position = Vector2(216, 40)

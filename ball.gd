@@ -8,9 +8,6 @@ var is_running: bool = false
 var anubisscore: int = 0
 var playerscore: int = 0
 
-func _ready():
-	$CollisionCooldown.start()
-
 func reset_positions():
 	position = get_parent().get_node("BallPosition").position
 	forward = Vector2(1, 1).normalized()
@@ -24,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	if (not is_running):
 		visible = false
 		get_parent().get_node("Paddle").position = Vector2(218,610)
+		get_parent().get_node("Opponent").position = Vector2(216,40)
 		if (Input.is_action_just_pressed("Start")):
 			is_running = true
 			visible = true
@@ -32,10 +30,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var collision: KinematicCollision2D = move_and_collide(speed*forward)
-	if collision and not $CollisionCooldown.is_stopped():
-		return
 	if (collision):
-		$CollisionCooldown.start()
 		get_parent().get_node("boing").play()
 		forward = forward.bounce(collision.get_normal())
 		speed = clamp(speed + 0.2, 1.1, 2.5)
@@ -46,13 +41,14 @@ func _physics_process(delta: float) -> void:
 			var min_angle: float
 			var max_angle: float
 			if (collision.get_collider().is_in_group("Opponent")):
-				min_angle = PI * 0.2 
-				max_angle = PI * 0.8   
+				min_angle = PI * 0.4
+				max_angle = PI * 0.7   
 			else:
-				min_angle = -PI * 0.8
-				max_angle = -PI * 0.2
+				min_angle = -PI * 0.7
+				max_angle = -PI * 0.3
 			var bounce_angle = lerp(min_angle,max_angle, pos_on_paddle)
 			forward = Vector2.from_angle(bounce_angle)
+			get_parent().get_node("Opponent").opp_movement += 0.1
 			
 		if (collision.get_collider().is_in_group("GameOver")):
 			if (collision.get_collider().is_in_group("AnubisPoint")):
