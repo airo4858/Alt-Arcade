@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://onhi86sif287"
+path="res://.godot/imported/034 - Angry Aztec.mp3-78d2b6946837de48885f1fd143b90575.mp3str"
+
+[deps]
+
+source_file="res://034 - Angry Aztec.mp3"
+dest_files=["res://.godot/imported/034 - Angry Aztec.mp3-78d2b6946837de48885f1fd143b90575.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

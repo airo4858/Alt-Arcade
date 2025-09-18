@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 			is_running = true
 			visible = true
 			get_parent().get_node("StartScreen").visible = false
+			get_parent().get_node("soundtrack").play()
 		return
 	
 	var collision: KinematicCollision2D = move_and_collide(speed*forward)
@@ -35,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		return
 	if (collision):
 		$CollisionCooldown.start()
+		get_parent().get_node("boing").play()
 		forward = forward.bounce(collision.get_normal())
 		speed = clamp(speed + 0.2, 1.1, 2.5)
 			

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://byvmxbf4t8qys"]
+[gd_scene load_steps=20 format=3 uid="uid://byvmxbf4t8qys"]
 
 [ext_resource type="PackedScene" uid="uid://ca8awl2bsuwt3" path="res://paddle.tscn" id="1_8cm68"]
 [ext_resource type="Texture2D" uid="uid://bxcb7jise48a2" path="res://anubis_icon.png" id="1_htjg5"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://ball.gd" id="4_wlx0j"]
 [ext_resource type="Script" path="res://opponent.gd" id="6_a87uh"]
 [ext_resource type="FontFile" uid="uid://cnoxr2hkjq6e4" path="res://pixel-game/Pixel Game.otf" id="7_qdnmh"]
+[ext_resource type="AudioStream" uid="uid://c0of3t3a6rlw4" path="res://boing-rubber-band-smartsound-fx-1-00-00.mp3" id="12_8unwf"]
+[ext_resource type="AudioStream" uid="uid://onhi86sif287" path="res://034 - Angry Aztec.mp3" id="12_qloc7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_armvo"]
 
@@ -143,3 +145,11 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_qdnmh")
 theme_override_font_sizes/font_size = 52
 text = "Weighing Of The Heart"
+
+[node name="boing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_8unwf")
+volume_db = 7.123
+
+[node name="soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_qloc7")
+volume_db = -7.495
